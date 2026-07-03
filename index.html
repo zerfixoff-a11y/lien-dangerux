@@ -4,84 +4,73 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Cyber Safety Panel</title>
+<title>Security Panel</title>
 
 <style>
 body {
   margin: 0;
   font-family: system-ui, Arial;
-  background: #f3f4f6;
-  color: #111;
+  background: #f5f5f4;
   display: flex;
 }
 
-/* MENU GAUCHE */
+/* SIDEBAR */
 .sidebar {
-  width: 240px;
+  width: 250px;
+  height: 100vh;
   background: #111827;
   color: white;
-  height: 100vh;
   padding: 20px;
   position: fixed;
 }
 
 .sidebar h2 {
-  font-size: 16px;
-  margin-bottom: 15px;
   color: #facc15;
+  font-size: 16px;
 }
 
-.nav {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.nav button {
+.menu button {
+  width: 100%;
+  margin-top: 10px;
   padding: 10px;
   border: none;
   border-radius: 8px;
-  cursor: pointer;
   background: #1f2937;
   color: white;
+  cursor: pointer;
   text-align: left;
 }
 
-.nav button:hover {
+.menu button:hover {
   background: #374151;
 }
 
-/* CONTENU */
+/* CONTENT */
 .content {
-  margin-left: 260px;
+  margin-left: 270px;
   padding: 30px;
+  width: 100%;
   max-width: 900px;
 }
 
 .card {
   background: white;
-  padding: 25px;
-  border-radius: 14px;
+  padding: 30px;
+  border-radius: 16px;
   box-shadow: 0 10px 25px rgba(0,0,0,0.08);
 }
 
 h1 {
   margin-top: 0;
+  font-size: 28px;
 }
 
 .block {
-  margin-top: 15px;
-  padding: 15px;
   background: #f9fafb;
-  border-radius: 10px;
-  border-left: 5px solid #3b82f6;
-}
-
-.footer {
-  margin-top: 40px;
-  padding: 20px;
-  background: #fff;
+  padding: 15px;
   border-radius: 12px;
+  margin-top: 15px;
+  border-left: 5px solid #3b82f6;
 }
 
 input {
@@ -94,12 +83,16 @@ input {
 
 button.check {
   margin-top: 10px;
-  padding: 10px 15px;
+  padding: 10px;
   border: none;
   border-radius: 8px;
   background: #111827;
   color: white;
   cursor: pointer;
+}
+
+small {
+  color: #6b7280;
 }
 </style>
 
@@ -109,110 +102,106 @@ button.check {
 
 <!-- MENU -->
 <div class="sidebar">
-  <h2>🛡️ Sécurité</h2>
+  <h2>🛡️ Security Panel</h2>
 
-  <div class="nav">
-    <button onclick="show('roblox')">Roblox</button>
-    <button onclick="show('youtube')">YouTube</button>
-    <button onclick="show('tiktok')">TikTok</button>
-    <button onclick="show('fortnite')">Fortnite</button>
-    <button onclick="show('cod')">Call of Duty</button>
-    <button onclick="show('check')">Vérifier URL</button>
+  <div class="menu">
+    <button onclick="load('home')">Accueil</button>
+    <button onclick="load('roblox')">Roblox</button>
+    <button onclick="load('youtube')">YouTube</button>
+    <button onclick="load('tiktok')">TikTok</button>
+    <button onclick="load('fortnite')">Fortnite</button>
+    <button onclick="load('cod')">Call of Duty</button>
+    <button onclick="load('check')">Vérifier URL</button>
   </div>
 </div>
 
-<!-- CONTENU -->
+<!-- CONTENT -->
 <div class="content">
 
 <div class="card" id="page">
-
-<h1>Bienvenue sur le panneau de sécurité</h1>
-
-<p>
-Choisis une plateforme à gauche pour voir comment éviter les arnaques et protéger ton compte.
-</p>
-
+  <h1>Bienvenue 👋</h1>
+  <p>Choisis une plateforme pour voir comment éviter les arnaques.</p>
 </div>
 
 </div>
 
 <script>
 
-function show(page) {
-  const p = document.getElementById("page");
+function load(page) {
+  let p = document.getElementById("page");
+
+  if (page === "home") {
+    p.innerHTML = `
+    <h1>🛡️ Security Panel</h1>
+    <p>Ce site t’aide à éviter les arnaques et liens dangereux sur Internet.</p>
+    `;
+  }
 
   if (page === "roblox") {
     p.innerHTML = `
-    <h1>Roblox 🔴</h1>
+    <h1>Roblox</h1>
     <div class="block">
-    ⚠️ Ne donne jamais ton mot de passe Roblox.<br>
-    ⚠️ Méfie-toi des “free robux” et générateurs.<br>
-    ⚠️ Roblox ne demande jamais ton mot de passe en dehors du site officiel.
+    ❗ Ne jamais donner ton mot de passe.<br>
+    ❗ Attention aux “free Robux”.<br>
+    ❗ Roblox ne demande jamais tes identifiants ailleurs que sur roblox.com
     </div>
-    <p>
-    🔗 Site officiel : https://www.roblox.com
-    </p>`;
+    <small>Site officiel : https://www.roblox.com</small>
+    `;
   }
 
   if (page === "youtube") {
     p.innerHTML = `
-    <h1>YouTube ▶️</h1>
+    <h1>YouTube</h1>
     <div class="block">
-    ⚠️ Ne clique pas sur des liens “cadeaux” dans les commentaires.<br>
-    ⚠️ Les faux giveaways sont très fréquents.<br>
-    ⚠️ Google / YouTube ne demandent jamais ton mot de passe par message.
+    ❗ Attention aux faux giveaways.<br>
+    ❗ Ne clique pas sur des liens dans les commentaires.<br>
+    ❗ Google ne demande jamais ton mot de passe.
     </div>
-    <p>
-    🔗 Site officiel : https://www.youtube.com
-    </p>`;
+    <small>Site officiel : https://www.youtube.com</small>
+    `;
   }
 
   if (page === "tiktok") {
     p.innerHTML = `
-    <h1>TikTok 🎵</h1>
+    <h1>TikTok</h1>
     <div class="block">
-    ⚠️ Attention aux liens en bio ou messages privés.<br>
-    ⚠️ Faux comptes créateurs très fréquents.<br>
-    ⚠️ Ne jamais se connecter via un lien externe.
+    ❗ Attention aux liens en bio.<br>
+    ❗ Faux comptes créateurs fréquents.<br>
+    ❗ Ne jamais se connecter via un lien externe.
     </div>
-    <p>
-    🔗 Site officiel : https://www.tiktok.com
-    </p>`;
+    <small>Site officiel : https://www.tiktok.com</small>
+    `;
   }
 
   if (page === "fortnite") {
     p.innerHTML = `
-    <h1>Fortnite 🎮</h1>
+    <h1>Fortnite</h1>
     <div class="block">
-    ⚠️ Epic Games ne donne jamais de V-Bucks gratuits.<br>
-    ⚠️ Attention aux sites “skins gratuits”.<br>
-    ⚠️ Toujours passer par Epic Games officiel.
+    ❗ Aucun V-Bucks gratuits.<br>
+    ❗ Attention aux sites de skins gratuits.<br>
+    ❗ Toujours utiliser Epic Games officiel.
     </div>
-    <p>
-    🔗 Site officiel : https://www.fortnite.com
-    </p>`;
+    <small>Site officiel : https://www.fortnite.com</small>
+    `;
   }
 
   if (page === "cod") {
     p.innerHTML = `
-    <h1>Call of Duty 🎯</h1>
+    <h1>Call of Duty</h1>
     <div class="block">
-    ⚠️ Aucun site externe ne donne de CP gratuits.<br>
-    ⚠️ Méfie-toi des liens de “boost XP”.<br>
-    ⚠️ Ne partage jamais ton compte Activision.
+    ❗ Aucun CP gratuit.<br>
+    ❗ Attention aux hacks et boosts.<br>
+    ❗ Ne partage jamais ton compte Activision.
     </div>
-    <p>
-    🔗 Site officiel : https://www.callofduty.com
-    </p>`;
+    <small>Site officiel : https://www.callofduty.com</small>
+    `;
   }
 
   if (page === "check") {
     p.innerHTML = `
     <h1>🔎 Vérifier une URL</h1>
 
-    <p>Colle un lien pour vérifier s’il semble dangereux :</p>
-
-    <input id="url" placeholder="https://example.com">
+    <input id="url" placeholder="Colle ton lien ici">
     <button class="check" onclick="check()">Analyser</button>
 
     <p id="result"></p>
@@ -224,21 +213,22 @@ function check() {
   let url = document.getElementById("url").value.toLowerCase();
   let r = document.getElementById("result");
 
-  let trusted = ["youtube.com","roblox.com","tiktok.com","epicgames.com","callofduty.com"];
+  let safe = ["youtube.com","roblox.com","tiktok.com","epicgames.com","callofduty.com"];
 
-  if (trusted.some(t => url.includes(t))) {
+  if (safe.some(d => url.includes(d))) {
     r.innerHTML = "✅ Site fiable connu";
     r.style.color = "green";
   }
   else if (url.includes("free") || url.includes("hack") || url.includes("robux")) {
-    r.innerHTML = "🚨 Très suspect";
+    r.innerHTML = "🚨 Lien suspect";
     r.style.color = "red";
   }
   else {
-    r.innerHTML = "⚠️ Inconnu, évite si tu n'es pas sûr";
+    r.innerHTML = "⚠️ Inconnu, fais attention";
     r.style.color = "orange";
   }
 }
+
 </script>
 
 </body>
