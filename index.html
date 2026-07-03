@@ -4,111 +4,71 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Security Panel</title>
+<title>Centre de prévention numérique</title>
 
 <style>
 body {
   margin: 0;
   font-family: system-ui, Arial;
-  background: #f5f5f4;
-  display: flex;
+  background: #f3f4f6;
+  color: #111827;
 }
 
-/* SIDEBAR */
-.sidebar {
-  width: 250px;
-  height: 100vh;
-  background: #111827;
-  color: white;
-  padding: 20px;
-  position: fixed;
-}
-
-.sidebar h2 {
-  color: #facc15;
-}
-
-.menu button {
-  width: 100%;
-  margin-top: 10px;
-  padding: 10px;
-  border: none;
-  border-radius: 8px;
-  background: #1f2937;
-  color: white;
-  cursor: pointer;
-  text-align: left;
-  transition: 0.2s;
-}
-
-.menu button:hover {
-  background: #374151;
-}
-
-/* CONTENT */
-.content {
-  margin-left: 270px;
-  padding: 30px;
-  width: 100%;
+.container {
   max-width: 900px;
+  margin: auto;
+  padding: 40px 20px;
 }
 
-/* CARD + ANIMATION */
 .card {
   background: white;
-  padding: 30px;
-  border-radius: 16px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-
-  opacity: 1;
-  transform: translateY(0);
-  transition: all 0.35s ease;
-}
-
-/* animation sortie */
-.card.hide {
-  opacity: 0;
-  transform: translateY(20px);
-}
-
-/* animation entrée */
-.card.show {
-  opacity: 1;
-  transform: translateY(0);
+  padding: 40px;
+  border-radius: 18px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
 }
 
 h1 {
-  margin-top: 0;
+  font-size: 32px;
+  margin-bottom: 10px;
 }
 
-.block {
-  background: #f9fafb;
-  padding: 15px;
-  border-radius: 12px;
-  margin-top: 15px;
-  border-left: 5px solid #3b82f6;
+p {
+  line-height: 1.8;
+  font-size: 16px;
+  color: #374151;
 }
 
-input {
-  width: 100%;
-  padding: 10px;
-  margin-top: 10px;
-  border-radius: 8px;
-  border: 1px solid #ccc;
+.menu {
+  margin-top: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 
-button.check {
-  margin-top: 10px;
-  padding: 10px;
+button {
+  padding: 12px 14px;
   border: none;
-  border-radius: 8px;
+  border-radius: 10px;
   background: #111827;
   color: white;
   cursor: pointer;
 }
 
-small {
-  color: #6b7280;
+button:hover {
+  background: #1f2937;
+}
+
+.block {
+  margin-top: 25px;
+  padding: 20px;
+  background: #f9fafb;
+  border-left: 5px solid #3b82f6;
+  border-radius: 10px;
+}
+
+.title {
+  font-size: 24px;
+  margin-bottom: 15px;
 }
 </style>
 
@@ -116,148 +76,212 @@ small {
 
 <body>
 
-<!-- MENU -->
-<div class="sidebar">
-  <h2>🛡️ Security Panel</h2>
+<div class="container">
 
-  <div class="menu">
-    <button onclick="load('home')">Accueil</button>
-    <button onclick="load('roblox')">Roblox</button>
-    <button onclick="load('youtube')">YouTube</button>
-    <button onclick="load('tiktok')">TikTok</button>
-    <button onclick="load('fortnite')">Fortnite</button>
-    <button onclick="load('cod')">Call of Duty</button>
-    <button onclick="load('check')">Vérifier URL</button>
-  </div>
+<div class="card" id="page">
+
+<h1>🛡️ Centre de prévention numérique</h1>
+
+<p>
+Ce site a été créé pour t’aider à comprendre les risques liés aux liens sur Internet.
+Chaque jour, des milliers de personnes se font piéger par des faux sites, des liens frauduleux ou des messages trompeurs.
+</p>
+
+<p>
+L’objectif de ce site est simple :
+t’apprendre à reconnaître les dangers et éviter de perdre tes comptes, tes données ou ton argent.
+</p>
+
+<div class="menu">
+<button onclick="openPage('home')">Accueil</button>
+<button onclick="openPage('roblox')">Roblox</button>
+<button onclick="openPage('youtube')">YouTube</button>
+<button onclick="openPage('tiktok')">TikTok</button>
+<button onclick="openPage('fortnite')">Fortnite</button>
+<button onclick="openPage('cod')">Call of Duty</button>
+<button onclick="openPage('check')">Vérifier un lien</button>
 </div>
 
-<!-- CONTENT -->
-<div class="content">
-  <div class="card" id="page">
-    <h1>Bienvenue 👋</h1>
-    <p>Choisis une plateforme à gauche.</p>
-  </div>
+</div>
+
 </div>
 
 <script>
 
-function animateChange(html) {
-  let page = document.getElementById("page");
+function openPage(page){
 
-  // fade out
-  page.classList.add("hide");
+let p = document.getElementById("page");
 
-  setTimeout(() => {
-    page.innerHTML = html;
+if(page === "home"){
+p.innerHTML = `
+<h1>🛡️ Centre de prévention numérique</h1>
 
-    // reset + fade in
-    page.classList.remove("hide");
-    page.classList.add("show");
+<p>
+Internet n’est pas dangereux en soi, mais certaines personnes l’utilisent pour tromper les autres.
+Les arnaques les plus fréquentes passent par des liens.
+</p>
 
-    setTimeout(() => {
-      page.classList.remove("show");
-    }, 350);
+<p>
+Un lien peut sembler normal mais rediriger vers un faux site identique à un vrai.
+C’est pour cela que la vigilance est essentielle.
+</p>
 
-  }, 250);
+<div class="block">
+Ce site te permet de comprendre les dangers par plateforme et d’apprendre à les éviter efficacement.
+</div>
+`;
 }
 
-function load(p) {
+if(page === "roblox"){
+p.innerHTML = `
+<div class="title">Roblox</div>
 
-  if (p === "home") {
-    animateChange(`
-      <h1>🛡️ Security Panel</h1>
-      <p>Ce site aide à éviter les arnaques et liens dangereux.</p>
-    `);
-  }
+<p>
+Roblox est souvent utilisé pour des arnaques ciblant les jeunes joueurs.
+Les escroqueries les plus courantes concernent les “Robux gratuits”.
+</p>
 
-  if (p === "roblox") {
-    animateChange(`
-      <h1>Roblox</h1>
-      <div class="block">
-      ❗ Ne donne jamais ton mot de passe<br>
-      ❗ Attention aux “free Robux”<br>
-      ❗ Toujours utiliser roblox.com
-      </div>
-      <small>https://www.roblox.com</small>
-    `);
-  }
+<div class="block">
+Les sites ou vidéos promettant des Robux gratuits sont presque toujours des arnaques.
+Ils demandent souvent :
+<br><br>
+- ton mot de passe<br>
+- ton email<br>
+- ou une connexion externe à Roblox
+</div>
 
-  if (p === "youtube") {
-    animateChange(`
-      <h1>YouTube</h1>
-      <div class="block">
-      ❗ Faux giveaways dans commentaires<br>
-      ❗ Liens suspects dans descriptions<br>
-      ❗ Google ne demande jamais ton mot de passe
-      </div>
-      <small>https://www.youtube.com</small>
-    `);
-  }
-
-  if (p === "tiktok") {
-    animateChange(`
-      <h1>TikTok</h1>
-      <div class="block">
-      ❗ Liens en bio dangereux<br>
-      ❗ Faux comptes créateurs<br>
-      ❗ Ne pas se connecter via liens externes
-      </div>
-      <small>https://www.tiktok.com</small>
-    `);
-  }
-
-  if (p === "fortnite") {
-    animateChange(`
-      <h1>Fortnite</h1>
-      <div class="block">
-      ❗ Aucun V-Bucks gratuits<br>
-      ❗ Sites skins = arnaques<br>
-      ❗ Utiliser Epic Games officiel
-      </div>
-      <small>https://www.fortnite.com</small>
-    `);
-  }
-
-  if (p === "cod") {
-    animateChange(`
-      <h1>Call of Duty</h1>
-      <div class="block">
-      ❗ Aucun CP gratuit<br>
-      ❗ Attention hacks/boosts<br>
-      ❗ Ne partage jamais ton compte
-      </div>
-      <small>https://www.callofduty.com</small>
-    `);
-  }
-
-  if (p === "check") {
-    animateChange(`
-      <h1>🔎 Vérifier une URL</h1>
-      <input id="url" placeholder="https://exemple.com">
-      <button class="check" onclick="check()">Analyser</button>
-      <p id="result"></p>
-    `);
-  }
+<p>
+Roblox ne distribue jamais de Robux gratuitement via des sites externes.
+Tout système de ce type est frauduleux.
+</p>
+`;
 }
 
-function check() {
-  let url = document.getElementById("url").value.toLowerCase();
-  let r = document.getElementById("result");
+if(page === "youtube"){
+p.innerHTML = `
+<div class="title">YouTube</div>
 
-  let safe = ["youtube.com","roblox.com","tiktok.com","epicgames.com","callofduty.com"];
+<p>
+YouTube est souvent utilisé pour diffuser des liens frauduleux dans les commentaires ou descriptions de vidéos.
+</p>
 
-  if (safe.some(d => url.includes(d))) {
-    r.innerHTML = "✅ Site fiable";
-    r.style.color = "green";
-  }
-  else if (url.includes("free") || url.includes("hack") || url.includes("robux")) {
-    r.innerHTML = "🚨 Suspect";
-    r.style.color = "red";
-  }
-  else {
-    r.innerHTML = "⚠️ Inconnu";
-    r.style.color = "orange";
-  }
+<div class="block">
+Les arnaques les plus fréquentes :
+<br><br>
+- faux giveaways<br>
+- faux liens de récompenses<br>
+- faux sites de “crack” ou “premium gratuit”
+</div>
+
+<p>
+Google et YouTube ne demandent jamais ton mot de passe via un lien externe.
+Si un lien te demande de te connecter, il est probablement dangereux.
+</p>
+`;
+}
+
+if(page === "tiktok"){
+p.innerHTML = `
+<div class="title">TikTok</div>
+
+<p>
+TikTok est souvent utilisé pour diffuser des liens en bio ou en message privé.
+</p>
+
+<div class="block">
+Les risques :
+<br><br>
+- faux sites de followers gratuits<br>
+- liens de récompenses<br>
+- faux profils de créateurs connus
+</div>
+
+<p>
+Ne te connecte jamais à un site externe via un lien TikTok sans vérification.
+</p>
+`;
+}
+
+if(page === "fortnite"){
+p.innerHTML = `
+<div class="title">Fortnite</div>
+
+<p>
+Fortnite est une cible majeure des arnaques liées aux V-Bucks gratuits.
+</p>
+
+<div class="block">
+Les escroqueries typiques :
+<br><br>
+- sites de V-Bucks gratuits<br>
+- générateurs de skins<br>
+- faux concours Epic Games
+</div>
+
+<p>
+Epic Games ne distribue jamais de V-Bucks gratuitement via des sites externes.
+Tout ce qui promet cela est une arnaque.
+</p>
+`;
+}
+
+if(page === "cod"){
+p.innerHTML = `
+<div class="title">Call of Duty</div>
+
+<p>
+Call of Duty est souvent utilisé pour des arnaques liées aux points COD.
+</p>
+
+<div class="block">
+Les dangers :
+<br><br>
+- hacks gratuits<br>
+- boosts XP illégaux<br>
+- faux générateurs de CP
+</div>
+
+<p>
+Activision ne propose jamais de ressources gratuites via des liens externes.
+</p>
+`;
+}
+
+if(page === "check"){
+p.innerHTML = `
+<div class="title">🔎 Vérifier un lien</div>
+
+<p>
+Colle un lien pour vérifier s’il semble suspect.
+</p>
+
+<input id="url" placeholder="https://exemple.com">
+<button onclick="check()">Analyser</button>
+
+<p id="result"></p>
+`;
+}
+
+}
+
+function check(){
+let url = document.getElementById("url").value.toLowerCase();
+let r = document.getElementById("result");
+
+let safe = ["youtube.com","roblox.com","tiktok.com","epicgames.com","callofduty.com"];
+
+if(safe.some(d => url.includes(d))){
+r.innerHTML = "✅ Site connu et généralement fiable";
+r.style.color = "green";
+}
+else if(url.includes("free") || url.includes("hack") || url.includes("robux")){
+r.innerHTML = "🚨 Lien fortement suspect";
+r.style.color = "red";
+}
+else {
+r.innerHTML = "⚠️ Inconnu — évite si tu n’es pas sûr";
+r.style.color = "orange";
+}
 }
 
 </script>
