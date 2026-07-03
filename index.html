@@ -1,121 +1,188 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <title>Prévention Internet - Sécurité des liens</title>
+<meta charset="UTF-8">
+<title>SafeLink - Prévention Internet</title>
 
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #0f172a;
-      color: white;
-      text-align: center;
-      padding: 40px;
-    }
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #0f172a, #1e293b);
+  color: white;
+}
 
-    .box {
-      background: #1e293b;
-      padding: 25px;
-      border-radius: 12px;
-      max-width: 650px;
-      margin: auto;
-      box-shadow: 0 0 20px rgba(0,0,0,0.4);
-    }
+.container {
+  max-width: 900px;
+  margin: auto;
+  padding: 40px;
+}
 
-    h1 {
-      color: #facc15;
-    }
+.card {
+  background: rgba(255,255,255,0.05);
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+}
 
-    input {
-      width: 90%;
-      padding: 10px;
-      margin-top: 15px;
-      border-radius: 8px;
-      border: none;
-      font-size: 14px;
-    }
+h1 {
+  color: #facc15;
+  font-size: 32px;
+}
 
-    button {
-      margin-top: 10px;
-      padding: 10px 15px;
-      border: none;
-      border-radius: 8px;
-      background: #22c55e;
-      color: white;
-      cursor: pointer;
-      font-size: 15px;
-    }
+p {
+  font-size: 16px;
+  line-height: 1.6;
+  opacity: 0.9;
+}
 
-    button:hover {
-      background: #16a34a;
-    }
+.section {
+  margin-top: 25px;
+  padding: 20px;
+  background: rgba(0,0,0,0.25);
+  border-radius: 12px;
+}
 
-    #result {
-      margin-top: 20px;
-      font-size: 18px;
-      font-weight: bold;
-    }
+input {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+  margin-top: 10px;
+  font-size: 14px;
+}
 
-    .warning {
-      margin-top: 15px;
-      font-size: 15px;
-      color: #fbbf24;
-    }
-  </style>
+button {
+  margin-top: 10px;
+  padding: 12px 18px;
+  border: none;
+  border-radius: 8px;
+  background: #22c55e;
+  color: white;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #16a34a;
+}
+
+.result {
+  margin-top: 15px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.footer {
+  margin-top: 40px;
+  font-size: 14px;
+  opacity: 0.8;
+  text-align: center;
+}
+</style>
 </head>
 
 <body>
 
-<div class="box">
-  <h1>⚠️ Prévention Internet</h1>
+<div class="container">
 
-  <p class="warning">
-    Ne clique jamais sur des liens inconnus.<br>
-    Ils peuvent voler tes comptes ou infecter ton appareil.
-  </p>
+<div class="card">
 
-  <h2>🔎 Vérifier une URL</h2>
+<h1>⚠️ SafeLink - Prévention Internet</h1>
 
-  <input id="urlInput" placeholder="Colle ton lien ici...">
-  <br>
-  <button onclick="checkURL()">Analyser le lien</button>
+<p>
+Internet contient des milliers de liens dangereux.<br><br>
 
-  <div id="result"></div>
+🚨 Attention aux faux liens envoyés par des youtubeurs, messages privés, Discord, TikTok ou emails.<br><br>
+
+Ils peuvent :
+- voler tes comptes (YouTube, Roblox, Discord…)
+- installer des virus
+- te rediriger vers des faux sites
+- récupérer tes mots de passe<br><br>
+
+👉 Toujours vérifier avant de cliquer.
+</p>
+
+<div class="section">
+
+<h2>🔎 Vérifie ton lien</h2>
+
+<input id="url" placeholder="Colle ton lien ici...">
+
+<button onclick="check()">Analyser</button>
+
+<div id="result" class="result"></div>
+
+</div>
+
+</div>
+
+<div class="footer">
+SafeLink - Outil de prévention éducatif
+</div>
+
 </div>
 
 <script>
-function checkURL() {
-  const url = document.getElementById("urlInput").value.toLowerCase();
-  const result = document.getElementById("result");
+function check() {
+  let url = document.getElementById("url").value.toLowerCase();
+  let result = document.getElementById("result");
 
   let score = 0;
 
-  // vérifications simples (anti arnaques basiques)
-  if (!url.startsWith("http")) score += 1;
+  // domaines fiables (liste simple)
+  let trusted = [
+    "youtube.com",
+    "youtu.be",
+    "roblox.com",
+    "google.com",
+    "discord.com",
+    "wikipedia.org",
+    "github.com"
+  ];
 
-  if (
-    url.includes("free") ||
-    url.includes("robux") ||
-    url.includes("hack") ||
-    url.includes("generator")
-  ) score += 2;
+  let suspiciousWords = [
+    "free",
+    "robux",
+    "hack",
+    "generator",
+    "login",
+    "verify",
+    "gift",
+    "reward"
+  ];
 
-  if (url.includes("login") && url.includes("verify")) score += 2;
+  // vérif domaine fiable
+  let isTrusted = trusted.some(domain => url.includes(domain));
 
-  if (url.length < 10) score += 1;
+  if (isTrusted) {
+    result.innerHTML = "✅ FIABLE — site reconnu et sûr (mais reste vigilant)";
+    result.style.color = "lightgreen";
+    return;
+  }
+
+  // analyse suspicion
+  if (!url.startsWith("http")) score++;
+
+  suspiciousWords.forEach(word => {
+    if (url.includes(word)) score += 2;
+  });
+
+  if (url.length < 10) score++;
 
   // résultat
   if (score >= 3) {
-    result.innerHTML = "⚠️ LIEN SUSPECT — risque élevé !";
+    result.innerHTML = "🚨 DANGEREUX — lien très suspect !";
     result.style.color = "red";
   }
   else if (score === 2) {
-    result.innerHTML = "⚠️ lien potentiellement dangereux";
+    result.innerHTML = "⚠️ ATTENTION — lien risqué";
     result.style.color = "orange";
   }
   else {
-    result.innerHTML = "✅ lien probablement sûr (reste vigilant)";
-    result.style.color = "lightgreen";
+    result.innerHTML = "❓ INCONNU — évite si tu n’es pas sûr";
+    result.style.color = "#fbbf24";
   }
 }
 </script>
