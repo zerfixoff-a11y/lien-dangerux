@@ -26,7 +26,6 @@ body {
 
 .sidebar h2 {
   color: #facc15;
-  font-size: 16px;
 }
 
 .menu button {
@@ -39,6 +38,7 @@ body {
   color: white;
   cursor: pointer;
   text-align: left;
+  transition: 0.2s;
 }
 
 .menu button:hover {
@@ -53,16 +53,32 @@ body {
   max-width: 900px;
 }
 
+/* CARD + ANIMATION */
 .card {
   background: white;
   padding: 30px;
   border-radius: 16px;
   box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+
+  opacity: 1;
+  transform: translateY(0);
+  transition: all 0.35s ease;
+}
+
+/* animation sortie */
+.card.hide {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+/* animation entrée */
+.card.show {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 h1 {
   margin-top: 0;
-  font-size: 28px;
 }
 
 .block {
@@ -117,95 +133,110 @@ small {
 
 <!-- CONTENT -->
 <div class="content">
-
-<div class="card" id="page">
-  <h1>Bienvenue 👋</h1>
-  <p>Choisis une plateforme pour voir comment éviter les arnaques.</p>
-</div>
-
+  <div class="card" id="page">
+    <h1>Bienvenue 👋</h1>
+    <p>Choisis une plateforme à gauche.</p>
+  </div>
 </div>
 
 <script>
 
-function load(page) {
-  let p = document.getElementById("page");
+function animateChange(html) {
+  let page = document.getElementById("page");
 
-  if (page === "home") {
-    p.innerHTML = `
-    <h1>🛡️ Security Panel</h1>
-    <p>Ce site t’aide à éviter les arnaques et liens dangereux sur Internet.</p>
-    `;
+  // fade out
+  page.classList.add("hide");
+
+  setTimeout(() => {
+    page.innerHTML = html;
+
+    // reset + fade in
+    page.classList.remove("hide");
+    page.classList.add("show");
+
+    setTimeout(() => {
+      page.classList.remove("show");
+    }, 350);
+
+  }, 250);
+}
+
+function load(p) {
+
+  if (p === "home") {
+    animateChange(`
+      <h1>🛡️ Security Panel</h1>
+      <p>Ce site aide à éviter les arnaques et liens dangereux.</p>
+    `);
   }
 
-  if (page === "roblox") {
-    p.innerHTML = `
-    <h1>Roblox</h1>
-    <div class="block">
-    ❗ Ne jamais donner ton mot de passe.<br>
-    ❗ Attention aux “free Robux”.<br>
-    ❗ Roblox ne demande jamais tes identifiants ailleurs que sur roblox.com
-    </div>
-    <small>Site officiel : https://www.roblox.com</small>
-    `;
+  if (p === "roblox") {
+    animateChange(`
+      <h1>Roblox</h1>
+      <div class="block">
+      ❗ Ne donne jamais ton mot de passe<br>
+      ❗ Attention aux “free Robux”<br>
+      ❗ Toujours utiliser roblox.com
+      </div>
+      <small>https://www.roblox.com</small>
+    `);
   }
 
-  if (page === "youtube") {
-    p.innerHTML = `
-    <h1>YouTube</h1>
-    <div class="block">
-    ❗ Attention aux faux giveaways.<br>
-    ❗ Ne clique pas sur des liens dans les commentaires.<br>
-    ❗ Google ne demande jamais ton mot de passe.
-    </div>
-    <small>Site officiel : https://www.youtube.com</small>
-    `;
+  if (p === "youtube") {
+    animateChange(`
+      <h1>YouTube</h1>
+      <div class="block">
+      ❗ Faux giveaways dans commentaires<br>
+      ❗ Liens suspects dans descriptions<br>
+      ❗ Google ne demande jamais ton mot de passe
+      </div>
+      <small>https://www.youtube.com</small>
+    `);
   }
 
-  if (page === "tiktok") {
-    p.innerHTML = `
-    <h1>TikTok</h1>
-    <div class="block">
-    ❗ Attention aux liens en bio.<br>
-    ❗ Faux comptes créateurs fréquents.<br>
-    ❗ Ne jamais se connecter via un lien externe.
-    </div>
-    <small>Site officiel : https://www.tiktok.com</small>
-    `;
+  if (p === "tiktok") {
+    animateChange(`
+      <h1>TikTok</h1>
+      <div class="block">
+      ❗ Liens en bio dangereux<br>
+      ❗ Faux comptes créateurs<br>
+      ❗ Ne pas se connecter via liens externes
+      </div>
+      <small>https://www.tiktok.com</small>
+    `);
   }
 
-  if (page === "fortnite") {
-    p.innerHTML = `
-    <h1>Fortnite</h1>
-    <div class="block">
-    ❗ Aucun V-Bucks gratuits.<br>
-    ❗ Attention aux sites de skins gratuits.<br>
-    ❗ Toujours utiliser Epic Games officiel.
-    </div>
-    <small>Site officiel : https://www.fortnite.com</small>
-    `;
+  if (p === "fortnite") {
+    animateChange(`
+      <h1>Fortnite</h1>
+      <div class="block">
+      ❗ Aucun V-Bucks gratuits<br>
+      ❗ Sites skins = arnaques<br>
+      ❗ Utiliser Epic Games officiel
+      </div>
+      <small>https://www.fortnite.com</small>
+    `);
   }
 
-  if (page === "cod") {
-    p.innerHTML = `
-    <h1>Call of Duty</h1>
-    <div class="block">
-    ❗ Aucun CP gratuit.<br>
-    ❗ Attention aux hacks et boosts.<br>
-    ❗ Ne partage jamais ton compte Activision.
-    </div>
-    <small>Site officiel : https://www.callofduty.com</small>
-    `;
+  if (p === "cod") {
+    animateChange(`
+      <h1>Call of Duty</h1>
+      <div class="block">
+      ❗ Aucun CP gratuit<br>
+      ❗ Attention hacks/boosts<br>
+      ❗ Ne partage jamais ton compte
+      </div>
+      <small>https://www.callofduty.com</small>
+    `);
   }
 
-  if (page === "check") {
-    p.innerHTML = `
-    <h1>🔎 Vérifier une URL</h1>
-
-    <input id="url" placeholder="Colle ton lien ici">
-    <button class="check" onclick="check()">Analyser</button>
-
-    <p id="result"></p>
-    `;
+  if (p === "check") {
+    animateChange(`
+      <h1>🔎 Vérifier une URL</h1>
+      <input id="url" placeholder="https://exemple.com">
+      <button class="check" onclick="check()">Analyser</button>
+      <p id="result"></p>
+    `);
   }
 }
 
@@ -216,15 +247,15 @@ function check() {
   let safe = ["youtube.com","roblox.com","tiktok.com","epicgames.com","callofduty.com"];
 
   if (safe.some(d => url.includes(d))) {
-    r.innerHTML = "✅ Site fiable connu";
+    r.innerHTML = "✅ Site fiable";
     r.style.color = "green";
   }
   else if (url.includes("free") || url.includes("hack") || url.includes("robux")) {
-    r.innerHTML = "🚨 Lien suspect";
+    r.innerHTML = "🚨 Suspect";
     r.style.color = "red";
   }
   else {
-    r.innerHTML = "⚠️ Inconnu, fais attention";
+    r.innerHTML = "⚠️ Inconnu";
     r.style.color = "orange";
   }
 }
