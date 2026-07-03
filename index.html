@@ -4,83 +4,102 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Alerte sécurité</title>
+<title>Cyber Safety Panel</title>
 
 <style>
 body {
   margin: 0;
   font-family: system-ui, Arial;
-  background: #f4f4f5;
+  background: #f3f4f6;
   color: #111;
+  display: flex;
 }
 
-.container {
+/* MENU GAUCHE */
+.sidebar {
+  width: 240px;
+  background: #111827;
+  color: white;
+  height: 100vh;
+  padding: 20px;
+  position: fixed;
+}
+
+.sidebar h2 {
+  font-size: 16px;
+  margin-bottom: 15px;
+  color: #facc15;
+}
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.nav button {
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  background: #1f2937;
+  color: white;
+  text-align: left;
+}
+
+.nav button:hover {
+  background: #374151;
+}
+
+/* CONTENU */
+.content {
+  margin-left: 260px;
+  padding: 30px;
   max-width: 900px;
-  margin: auto;
-  padding: 40px 20px;
 }
 
 .card {
-  background: #ffffff;
-  border-radius: 16px;
-  padding: 35px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-}
-
-.tag {
-  display: inline-block;
-  background: #fee2e2;
-  color: #991b1b;
-  padding: 6px 12px;
-  border-radius: 999px;
-  font-size: 13px;
-  font-weight: 600;
+  background: white;
+  padding: 25px;
+  border-radius: 14px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
 }
 
 h1 {
-  font-size: 32px;
-  margin-top: 15px;
-}
-
-p {
-  color: #374151;
-  line-height: 1.7;
-  font-size: 15px;
+  margin-top: 0;
 }
 
 .block {
-  margin-top: 25px;
-  padding: 18px;
-  border-radius: 12px;
+  margin-top: 15px;
+  padding: 15px;
   background: #f9fafb;
-  border: 1px solid #e5e7eb;
-}
-
-.red {
-  border-left: 5px solid #ef4444;
-}
-
-.blue {
+  border-radius: 10px;
   border-left: 5px solid #3b82f6;
 }
 
-.green {
-  border-left: 5px solid #22c55e;
+.footer {
+  margin-top: 40px;
+  padding: 20px;
+  background: #fff;
+  border-radius: 12px;
 }
 
-.button {
-  display: inline-block;
-  margin-top: 25px;
-  padding: 14px 18px;
+input {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+button.check {
+  margin-top: 10px;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 8px;
   background: #111827;
   color: white;
-  text-decoration: none;
-  border-radius: 12px;
-  font-weight: 600;
-}
-
-.button:hover {
-  background: #1f2937;
+  cursor: pointer;
 }
 </style>
 
@@ -88,62 +107,139 @@ p {
 
 <body>
 
-<div class="container">
+<!-- MENU -->
+<div class="sidebar">
+  <h2>🛡️ Sécurité</h2>
 
-<div class="card">
+  <div class="nav">
+    <button onclick="show('roblox')">Roblox</button>
+    <button onclick="show('youtube')">YouTube</button>
+    <button onclick="show('tiktok')">TikTok</button>
+    <button onclick="show('fortnite')">Fortnite</button>
+    <button onclick="show('cod')">Call of Duty</button>
+    <button onclick="show('check')">Vérifier URL</button>
+  </div>
+</div>
 
-<div class="tag">⚠️ ALERTE SÉCURITÉ</div>
+<!-- CONTENU -->
+<div class="content">
 
-<h1>Tu viens de cliquer sur un lien dangereux</h1>
+<div class="card" id="page">
+
+<h1>Bienvenue sur le panneau de sécurité</h1>
 
 <p>
-Cette page t’explique pourquoi ce type de lien est dangereux et comment éviter de te faire arnaquer sur Internet.
+Choisis une plateforme à gauche pour voir comment éviter les arnaques et protéger ton compte.
 </p>
 
-<div class="block red">
-<b>❗ Pourquoi ce lien peut être dangereux ?</b><br><br>
-
-Un lien peut être utilisé pour :
-<br><br>
-- voler tes comptes (YouTube, Discord, Roblox…)<br>
-- te faire entrer ton mot de passe sur un faux site<br>
-- installer un virus ou extension malveillante<br>
-- copier un site officiel pour te tromper
-</div>
-
-<div class="block blue">
-<b>🧠 Comment les arnaques fonctionnent ?</b><br><br>
-
-Les attaques jouent sur :
-<br><br>
-- la curiosité (“cadeaux gratuits”, “robux”, “hack”)<br>
-- la peur (“ton compte va être supprimé”)<br>
-- la confiance (faux amis / faux youtubeurs)<br><br>
-
-👉 Le but est de te faire cliquer sans réfléchir.
-</div>
-
-<div class="block green">
-<b>🛡️ Comment te protéger ?</b><br><br>
-
-✔ Ne clique jamais sur un lien inconnu<br>
-✔ Vérifie toujours l’adresse du site (URL exacte)<br>
-✔ Ne tape jamais ton mot de passe via un lien reçu<br>
-✔ Si doute → quitte immédiatement la page<br>
-✔ Utilise un outil de vérification
-</div>
-
-<h2>🔎 Vérifier un lien</h2>
-
-<p>Tu peux analyser un lien avec un outil fiable :</p>
-
-<a class="button" href="https://www.virustotal.com" target="_blank">
-🔍 Ouvrir VirusTotal
-</a>
-
 </div>
 
 </div>
+
+<script>
+
+function show(page) {
+  const p = document.getElementById("page");
+
+  if (page === "roblox") {
+    p.innerHTML = `
+    <h1>Roblox 🔴</h1>
+    <div class="block">
+    ⚠️ Ne donne jamais ton mot de passe Roblox.<br>
+    ⚠️ Méfie-toi des “free robux” et générateurs.<br>
+    ⚠️ Roblox ne demande jamais ton mot de passe en dehors du site officiel.
+    </div>
+    <p>
+    🔗 Site officiel : https://www.roblox.com
+    </p>`;
+  }
+
+  if (page === "youtube") {
+    p.innerHTML = `
+    <h1>YouTube ▶️</h1>
+    <div class="block">
+    ⚠️ Ne clique pas sur des liens “cadeaux” dans les commentaires.<br>
+    ⚠️ Les faux giveaways sont très fréquents.<br>
+    ⚠️ Google / YouTube ne demandent jamais ton mot de passe par message.
+    </div>
+    <p>
+    🔗 Site officiel : https://www.youtube.com
+    </p>`;
+  }
+
+  if (page === "tiktok") {
+    p.innerHTML = `
+    <h1>TikTok 🎵</h1>
+    <div class="block">
+    ⚠️ Attention aux liens en bio ou messages privés.<br>
+    ⚠️ Faux comptes créateurs très fréquents.<br>
+    ⚠️ Ne jamais se connecter via un lien externe.
+    </div>
+    <p>
+    🔗 Site officiel : https://www.tiktok.com
+    </p>`;
+  }
+
+  if (page === "fortnite") {
+    p.innerHTML = `
+    <h1>Fortnite 🎮</h1>
+    <div class="block">
+    ⚠️ Epic Games ne donne jamais de V-Bucks gratuits.<br>
+    ⚠️ Attention aux sites “skins gratuits”.<br>
+    ⚠️ Toujours passer par Epic Games officiel.
+    </div>
+    <p>
+    🔗 Site officiel : https://www.fortnite.com
+    </p>`;
+  }
+
+  if (page === "cod") {
+    p.innerHTML = `
+    <h1>Call of Duty 🎯</h1>
+    <div class="block">
+    ⚠️ Aucun site externe ne donne de CP gratuits.<br>
+    ⚠️ Méfie-toi des liens de “boost XP”.<br>
+    ⚠️ Ne partage jamais ton compte Activision.
+    </div>
+    <p>
+    🔗 Site officiel : https://www.callofduty.com
+    </p>`;
+  }
+
+  if (page === "check") {
+    p.innerHTML = `
+    <h1>🔎 Vérifier une URL</h1>
+
+    <p>Colle un lien pour vérifier s’il semble dangereux :</p>
+
+    <input id="url" placeholder="https://example.com">
+    <button class="check" onclick="check()">Analyser</button>
+
+    <p id="result"></p>
+    `;
+  }
+}
+
+function check() {
+  let url = document.getElementById("url").value.toLowerCase();
+  let r = document.getElementById("result");
+
+  let trusted = ["youtube.com","roblox.com","tiktok.com","epicgames.com","callofduty.com"];
+
+  if (trusted.some(t => url.includes(t))) {
+    r.innerHTML = "✅ Site fiable connu";
+    r.style.color = "green";
+  }
+  else if (url.includes("free") || url.includes("hack") || url.includes("robux")) {
+    r.innerHTML = "🚨 Très suspect";
+    r.style.color = "red";
+  }
+  else {
+    r.innerHTML = "⚠️ Inconnu, évite si tu n'es pas sûr";
+    r.style.color = "orange";
+  }
+}
+</script>
 
 </body>
 </html>
