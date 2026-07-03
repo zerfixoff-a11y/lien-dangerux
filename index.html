@@ -4,30 +4,30 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Alerte de sécurité</title>
+<title>Alerte sécurité</title>
 
 <style>
 body {
   margin: 0;
-  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial;
-  background: #f3f4f6;
-  color: #111827;
+  font-family: system-ui, Arial;
+  background: #f4f4f5;
+  color: #111;
 }
 
 .container {
   max-width: 900px;
   margin: auto;
-  padding: 50px 20px;
+  padding: 40px 20px;
 }
 
 .card {
-  background: white;
-  border-radius: 18px;
-  padding: 40px;
-  box-shadow: 0 12px 35px rgba(0,0,0,0.08);
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 35px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
 }
 
-.badge {
+.tag {
   display: inline-block;
   background: #fee2e2;
   color: #991b1b;
@@ -38,52 +38,34 @@ body {
 }
 
 h1 {
+  font-size: 32px;
   margin-top: 15px;
-  font-size: 34px;
-  color: #111827;
-}
-
-.subtitle {
-  font-size: 16px;
-  color: #4b5563;
-  margin-top: 10px;
-  line-height: 1.6;
-}
-
-.section {
-  margin-top: 30px;
-}
-
-h2 {
-  font-size: 20px;
-  margin-bottom: 10px;
 }
 
 p {
-  line-height: 1.7;
   color: #374151;
+  line-height: 1.7;
   font-size: 15px;
 }
 
-.box {
-  background: #f9fafb;
-  border: 1px solid #e5e7eb;
+.block {
+  margin-top: 25px;
   padding: 18px;
   border-radius: 12px;
-  margin-top: 10px;
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
 }
 
-.warning {
+.red {
   border-left: 5px solid #ef4444;
 }
 
-.info {
+.blue {
   border-left: 5px solid #3b82f6;
 }
 
-.steps li {
-  margin-bottom: 8px;
-  line-height: 1.6;
+.green {
+  border-left: 5px solid #22c55e;
 }
 
 .button {
@@ -100,12 +82,6 @@ p {
 .button:hover {
   background: #1f2937;
 }
-
-.footer {
-  margin-top: 30px;
-  font-size: 13px;
-  color: #6b7280;
-}
 </style>
 
 </head>
@@ -116,70 +92,54 @@ p {
 
 <div class="card">
 
-<div class="badge">⚠️ Alerte de sécurité</div>
+<div class="tag">⚠️ ALERTE SÉCURITÉ</div>
 
 <h1>Tu viens de cliquer sur un lien dangereux</h1>
 
-<p class="subtitle">
-Ce type de page est une simulation de prévention pour t’expliquer comment les attaques sur internet fonctionnent et comment éviter de te faire piéger.
+<p>
+Cette page t’explique pourquoi ce type de lien est dangereux et comment éviter de te faire arnaquer sur Internet.
 </p>
 
-<div class="section">
-<h2>❗ Pourquoi ce lien peut être dangereux ?</h2>
+<div class="block red">
+<b>❗ Pourquoi ce lien peut être dangereux ?</b><br><br>
 
-<div class="box warning">
-Un lien dangereux peut sembler normal, mais il peut être utilisé pour :
+Un lien peut être utilisé pour :
 <br><br>
-- voler tes identifiants (YouTube, Discord, Roblox…)<br>
+- voler tes comptes (YouTube, Discord, Roblox…)<br>
 - te faire entrer ton mot de passe sur un faux site<br>
 - installer un virus ou extension malveillante<br>
-- rediriger vers une copie d’un site officiel
-</div>
+- copier un site officiel pour te tromper
 </div>
 
-<div class="section">
-<h2>🧠 Comment les arnaques fonctionnent</h2>
+<div class="block blue">
+<b>🧠 Comment les arnaques fonctionnent ?</b><br><br>
 
-<div class="box info">
-Les attaques utilisent souvent :
+Les attaques jouent sur :
 <br><br>
-- la curiosité (“free robux”, “cadeau”, “hack”…)<br>
+- la curiosité (“cadeaux gratuits”, “robux”, “hack”)<br>
 - la peur (“ton compte va être supprimé”)<br>
-- la confiance (faux youtubeurs ou amis)<br><br>
+- la confiance (faux amis / faux youtubeurs)<br><br>
 
-👉 Le but est simple : te faire cliquer sans réfléchir.
-</div>
-</div>
-
-<div class="section">
-<h2>📌 Étapes pour te protéger</h2>
-
-<div class="box">
-<ol class="steps">
-<li>Ne clique jamais sur un lien reçu par message si tu n’es pas sûr</li>
-<li>Vérifie toujours l’adresse du site (URL exacte)</li>
-<li>Ne tape jamais ton mot de passe via un lien reçu</li>
-<li>Si doute → quitte la page immédiatement</li>
-<li>Utilise un outil de vérification de liens</li>
-</ol>
-</div>
+👉 Le but est de te faire cliquer sans réfléchir.
 </div>
 
-<div class="section">
+<div class="block green">
+<b>🛡️ Comment te protéger ?</b><br><br>
+
+✔ Ne clique jamais sur un lien inconnu<br>
+✔ Vérifie toujours l’adresse du site (URL exacte)<br>
+✔ Ne tape jamais ton mot de passe via un lien reçu<br>
+✔ Si doute → quitte immédiatement la page<br>
+✔ Utilise un outil de vérification
+</div>
+
 <h2>🔎 Vérifier un lien</h2>
 
-<p>
-Si tu veux analyser un lien suspect, utilise un outil sécurisé reconnu :
-</p>
+<p>Tu peux analyser un lien avec un outil fiable :</p>
 
 <a class="button" href="https://www.virustotal.com" target="_blank">
-🔍 Vérifier avec VirusTotal
+🔍 Ouvrir VirusTotal
 </a>
-</div>
-
-<div class="footer">
-Page de prévention éducative – sensibilisation aux liens frauduleux
-</div>
 
 </div>
 
