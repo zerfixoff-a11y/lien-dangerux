@@ -4,61 +4,75 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Prévention Internet</title>
+<title>Prévention Sécurité Internet</title>
 
 <style>
 body {
   margin: 0;
-  font-family: Arial, sans-serif;
-  background: #0b1220;
-  color: white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial;
+  background: #f5f7fb;
+  color: #111827;
 }
 
 .container {
-  max-width: 850px;
-  padding: 30px;
+  max-width: 800px;
+  margin: auto;
+  padding: 40px 20px;
 }
 
 .card {
-  background: #111827;
-  padding: 25px;
+  background: white;
+  padding: 30px;
   border-radius: 14px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.08);
 }
 
 h1 {
-  color: #facc15;
-  font-size: 30px;
+  font-size: 28px;
+  color: #b91c1c;
+  margin-bottom: 10px;
+}
+
+h2 {
+  margin-top: 25px;
+  font-size: 20px;
 }
 
 p {
   line-height: 1.7;
-  font-size: 16px;
-  opacity: 0.9;
+  font-size: 15px;
+  color: #374151;
 }
 
 .warning {
-  color: #fbbf24;
-  font-weight: bold;
+  background: #fef2f2;
+  border-left: 5px solid #ef4444;
+  padding: 12px;
+  margin: 15px 0;
+  border-radius: 8px;
+}
+
+.info {
+  background: #eff6ff;
+  border-left: 5px solid #3b82f6;
+  padding: 12px;
+  margin: 15px 0;
+  border-radius: 8px;
 }
 
 .button {
   display: inline-block;
   margin-top: 20px;
-  padding: 12px 18px;
-  background: #ef4444;
+  padding: 12px 16px;
+  background: #111827;
   color: white;
   text-decoration: none;
   border-radius: 10px;
-  font-weight: bold;
+  font-weight: 500;
 }
 
 .button:hover {
-  background: #dc2626;
+  background: #1f2937;
 }
 </style>
 
@@ -70,35 +84,56 @@ p {
 
 <div class="card">
 
-<h1>⚠️ Prévention Internet</h1>
+<h1>⚠️ Alerte de sécurité Internet</h1>
 
 <p>
-Internet contient de nombreux liens dangereux.<br><br>
-
-⚠️ Un lien peut sembler normal mais être une arnaque.<br>
-Il peut :
-<br><br>
-
-- voler tes comptes (Roblox, YouTube, Discord…)<br>
-- installer des virus<br>
-- te rediriger vers de faux sites<br><br>
-
-<span class="warning">
-👉 Ne clique jamais sur un lien si tu n’es pas sûr à 100%.
-</span><br><br>
-
-Toujours vérifier avant de rentrer un mot de passe ou une information personnelle.
+Tu viens peut-être de cliquer sur un lien qui aurait pu être dangereux.
 </p>
 
-<h2>🔎 Vérification de lien</h2>
+<div class="warning">
+<b>Pourquoi certains liens sont dangereux ?</b><br><br>
+
+Un lien peut être utilisé pour :
+- te voler tes comptes (Roblox, YouTube, Discord…)
+- te faire entrer tes mots de passe sur un faux site
+- installer des virus ou extensions malveillantes
+- te rediriger vers des pages frauduleuses
+</div>
+
+<h2>📌 Comment reconnaître un lien dangereux ?</h2>
 
 <p>
-Tu peux vérifier tes liens ici :
+Fais attention si le lien :
+- promet des “free robux”, “hack”, “gift”
+- demande ton mot de passe directement
+- ressemble à un site connu mais avec une petite différence
+- vient d’un message ou d’un inconnu
+</p>
+
+<div class="info">
+<b>💡 Bonne pratique :</b><br><br>
+
+Toujours vérifier l’adresse exacte du site (URL).<br>
+Ne jamais se connecter via un lien reçu par message.<br>
+Préférer taper le site directement dans ton navigateur.
+</div>
+
+<h2>🔍 Comment vérifier un lien ?</h2>
+
+<p>
+Si tu as un doute, tu peux analyser le lien avec un outil sécurisé.
 </p>
 
 <a class="button" href="https://www.virustotal.com" target="_blank">
-🔍 Aller sur VirusTotal
+🔎 Vérifier un lien sur VirusTotal
 </a>
+
+<h2>🛡️ Conclusion</h2>
+
+<p>
+Si tu n’es pas sûr à 100% d’un lien, ne clique pas.<br>
+La majorité des arnaques fonctionnent en jouant sur la curiosité ou la peur.
+</p>
 
 </div>
 
