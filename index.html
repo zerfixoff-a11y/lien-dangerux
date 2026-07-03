@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Prévention Internet - Sécurité des liens</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #0f172a;
+      color: white;
+      text-align: center;
+      padding: 40px;
+    }
+
+    .box {
+      background: #1e293b;
+      padding: 25px;
+      border-radius: 12px;
+      max-width: 650px;
+      margin: auto;
+      box-shadow: 0 0 20px rgba(0,0,0,0.4);
+    }
+
+    h1 {
+      color: #facc15;
+    }
+
+    input {
+      width: 90%;
+      padding: 10px;
+      margin-top: 15px;
+      border-radius: 8px;
+      border: none;
+      font-size: 14px;
+    }
+
+    button {
+      margin-top: 10px;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 8px;
+      background: #22c55e;
+      color: white;
+      cursor: pointer;
+      font-size: 15px;
+    }
+
+    button:hover {
+      background: #16a34a;
+    }
+
+    #result {
+      margin-top: 20px;
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    .warning {
+      margin-top: 15px;
+      font-size: 15px;
+      color: #fbbf24;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="box">
+  <h1>⚠️ Prévention Internet</h1>
+
+  <p class="warning">
+    Ne clique jamais sur des liens inconnus.<br>
+    Ils peuvent voler tes comptes ou infecter ton appareil.
+  </p>
+
+  <h2>🔎 Vérifier une URL</h2>
+
+  <input id="urlInput" placeholder="Colle ton lien ici...">
+  <br>
+  <button onclick="checkURL()">Analyser le lien</button>
+
+  <div id="result"></div>
+</div>
+
+<script>
+function checkURL() {
+  const url = document.getElementById("urlInput").value.toLowerCase();
+  const result = document.getElementById("result");
+
+  let score = 0;
+
+  // vérifications simples (anti arnaques basiques)
+  if (!url.startsWith("http")) score += 1;
+
+  if (
+    url.includes("free") ||
+    url.includes("robux") ||
+    url.includes("hack") ||
+    url.includes("generator")
+  ) score += 2;
+
+  if (url.includes("login") && url.includes("verify")) score += 2;
+
+  if (url.length < 10) score += 1;
+
+  // résultat
+  if (score >= 3) {
+    result.innerHTML = "⚠️ LIEN SUSPECT — risque élevé !";
+    result.style.color = "red";
+  }
+  else if (score === 2) {
+    result.innerHTML = "⚠️ lien potentiellement dangereux";
+    result.style.color = "orange";
+  }
+  else {
+    result.innerHTML = "✅ lien probablement sûr (reste vigilant)";
+    result.style.color = "lightgreen";
+  }
+}
+</script>
+
+</body>
+</html>
